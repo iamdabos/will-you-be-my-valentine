@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knew you would say yes!</title>
+    <link rel="stylesheet" href="./yes_style.css">
+    <style>
+        .note-button {
+            margin-top: 30px;
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .note-button:hover {
+            background-color: #ff1493;
+            transform: scale(1.05);
+        }
+        
+        .note-container {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff3e0;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .note-container.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .note-text {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="header_text">Knew you would say yes!</h1>
+        <div class="gif_container">
+            <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmo3c3l5ODh3ZGN6NHhhaDE2Mjg1ZjkwOXczdDFxbWM3dTBtaW9zaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/9XY4f3FgFTT4QlaYqa/giphy.gif">
+        </div>
+        
+        <button class="note-button" onclick="toggleNote()">Read My Note 💌</button>
+        
+        <div class="note-container" id="noteContainer">
+            <p class="note-text">
+                Clicking yes,  just know my heart smiled in a manner which I do not believe can be fully described by words but I shall attempt to do so.
+What we have in common is not something I flaunt. It is more than love during the big, obvious times; it is love during the little times as well, how you came to me, how patient you were with me, how you took care of me when you did not need to but did. You loved me in a manner that transformed me and I hold that close to my heart with a lot of gratitude.
+I cherish you deeply. I love the laughs we shared, the discussions which lasted longer than we intended and the memories we made without knowing that it would be this much. Even our battles, our misunderstandings, our struggles--they are of interest to me. Since with their help we did not dissolve. We got to know, we developed, we decided to continue. And that means everything.
+You are one whom I have a place for in my heart, not despite the kind of person you are, but the way you make me feel seen, understood, and cared about. Being with you has been actual, flawed, gorgeous and worth every minute.
+So, me, truthful and naked, fair, ask you with my whole heart:
+Shall I keep on selecting us--with me--this Valentine-day and afterwards?<br>
+                With love,
+            </p>
+        </div>
+        
+        <!-- Background Music -->
+        <audio id="bgMusic" loop>
+            <source src="Indila_-_Love_Story_Version_Orchestral_(mp3.pm)-[AudioTrimmer.com].mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+    
+    <script>
+        // Toggle note visibility
+        function toggleNote() {
+            const noteContainer = document.getElementById('noteContainer');
+            noteContainer.classList.toggle('show');
+        }
+        
+        // Auto-play music (with user interaction fallback due to browser policies)
+        window.addEventListener('load', function() {
+            const music = document.getElementById('bgMusic');
+            
+            // Try to autoplay
+            music.play().catch(function() {
+                // If autoplay fails, play on first user interaction
+                document.body.addEventListener('click', function() {
+                    music.play();
+                }, { once: true });
+            });
+        });
+    </script>
+</body>
+</html>
